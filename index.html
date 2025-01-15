@@ -1,0 +1,166 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="crypto-utils.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div id="password-overlay" class="password-overlay active">
+    <div class="password-container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 10 L20 30 M10 20 L30 20" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>ABYSS</span>
+      </div>
+      <input type="password" id="password-input" placeholder="Enter Access Code" />
+      <button id="submit-password">Access System</button>
+      <p id="password-error" class="error-message"></p>
+    </div>
+  </div>
+  <div id="signup-overlay" class="password-overlay">
+    <div class="password-container">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 10 L20 30 M10 20 L30 20" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>ABYSS</span>
+      </div>
+      <input type="text" id="username-input" placeholder="Choose a username" />
+      <button id="submit-username">Create Profile</button>
+      <p id="username-error" class="error-message"></p>
+    </div>
+  </div>
+
+  <nav>
+    <div class="logo main-logo">
+      <svg width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M20 10 L20 30 M10 20 L30 20" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <span>ABYSS</span>
+    </div>
+    <div class="tab-container">
+      <button class="tab-btn active" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="games">Games</button>
+      <button class="tab-btn" data-tab="profile">Profile</button>
+      <button class="tab-btn" data-tab="arsenic">Arsenic</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="tab-content active" id="home">
+      <h1>Welcome to the Abyss</h1>
+      <div class="featured-games">
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Ethereal Legends</h3>
+          <p>Dive into a world of mystery and adventure</p>
+        </div>
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Cyber Nexus</h3>
+          <p>Experience the future of gaming</p>
+        </div>
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Shadow Realm</h3>
+          <p>Survive in a world of darkness</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="games">
+      <h2>Game Library</h2>
+      <div class="game-grid">
+        <div class="game-item" id="mario64-btn">
+          <h3>Shotgun Mario 64</h3>
+        </div>
+        <div class="game-item" id="perchance-btn">
+          <h3>Perchance</h3>
+        </div>
+        <div class="game-item" id="eaglercraft-btn">
+          <h3>EaglerCraft</h3>
+        </div>
+        <div class="game-item">Game 4</div>
+        <div class="game-item">Game 5</div>
+        <div class="game-item">Game 6</div>
+      </div>
+    </div>
+
+    <div class="game-page" id="mario64-page">
+      <button class="back-btn">← Back to Games</button>
+      <h2>Shotgun Mario 64</h2>
+      <div class="game-container">
+        <div id="game"></div>
+      </div>
+    </div>
+
+    <div class="game-page" id="perchance-page">
+      <button class="back-btn">← Back to Games</button>
+      <h2>Perchance</h2>
+      <div class="game-container">
+        <div id="perchance-game"></div>
+      </div>
+    </div>
+
+    <div class="game-page" id="eaglercraft-page">
+      <button class="back-btn">← Back to Games</button>
+      <h2>EaglerCraft</h2>
+      <div class="eaglercraft-container">
+        <button id="fullscreen-btn" class="fullscreen-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+        </button>
+        <iframe id="eaglercraft-frame" src="EaglerCraft.html" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div>
+
+    <div class="tab-content" id="profile">
+      <h2>Player Profile</h2>
+      <div class="profile-container">
+        <div class="profile-header">
+          <div class="avatar" id="avatar">
+            <input type="file" id="avatar-upload" accept="image/*" />
+            <div class="upload-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+            </div>
+          </div>
+          <div class="profile-info">
+            <h3 id="profile-username">Guest</h3>
+            <button id="change-username" class="edit-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Edit Username
+            </button>
+          </div>
+        </div>
+        <span id="remove-access" class="remove-access">remove access</span>
+      </div>
+    </div>
+
+    <div class="tab-content" id="arsenic">
+      <h2>Arsenic</h2>
+      <div class="arsenic-container">
+        <iframe src="https://abyss.zweiundvierzig.ch" frameborder="0"></iframe>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript">
+    EJS_player = '#game';
+    EJS_gameUrl = 'SM64Shotgun.z64';
+    EJS_core = 'mupen64plus2';
+  </script>
+  <script src="https://www.emulatorjs.com/loader.js"></script>
+</body>
+</html>
